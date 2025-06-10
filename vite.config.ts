@@ -14,5 +14,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base : "https://sathaniel99.github.io/tattoo-design/",
+  base : "/tattoo-design/",
 }));
