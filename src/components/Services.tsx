@@ -41,7 +41,7 @@ const Services = () => {
             Servicios
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Professional tattoo services with a futuristic twist
+            Servicios de tatuajes profesionales con un toque futurista
           </p>
         </div>
 
