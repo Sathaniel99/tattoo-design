@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Users, Zap } from 'lucide-react';
+import { Award, Users, BicepsFlexed } from 'lucide-react';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -13,9 +13,8 @@ const images = [
 
 const About = () => {
   const stats = [
-    { icon: Zap, label: 'Años de Experiencia', value: '8+' },
-    { icon: Users, label: 'Clientes Satisfechos', value: '500+' },
-    { icon: Award, label: 'Premios Ganados', value: '12' }
+    { icon: BicepsFlexed, label: 'Años de Experiencia', value: '8+' },
+    { icon: Users, label: 'Seguidores', value: '4.6 mil+' }
   ];
 
   const [current, setCurrent] = useState(0);
@@ -43,19 +42,19 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold neon-text">
               Acerca del Artista
             </h2>
-            
+
             <p className="text-lg text-muted-foreground leading-relaxed">
               Bienvenido al futuro del arte corporal. Soy un tatuador visionario especializado en diseños cyberpunk, geométricos y futuristas que desafían los límites del tatuaje tradicional.
             </p>
-            
+
             <p className="text-lg text-muted-foreground leading-relaxed">
               Mi trabajo combina técnicas digitales de arte de vanguardia con una maestría en el uso de la aguja,
               creando piezas que parecen descargadas directamente del ciberespacio a tu piel.
             </p>
-            
+
             <div className="pt-6">
               <h3 className="text-xl font-semibold mb-4 neon-text">Especialidades</h3>
               <ul className="space-y-2 text-muted-foreground">
@@ -122,9 +121,9 @@ const About = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center glow-card p-6 rounded-lg">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center glow-card p-6 rounded-lg">
                   <stat.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
                   <div className="text-2xl font-bold neon-text mb-1">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>

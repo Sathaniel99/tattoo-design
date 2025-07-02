@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { SocialIcon } from 'react-social-icons'
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { toast } from "@/components/ui/sonner";
 
 
 interface FormType {
@@ -17,19 +18,25 @@ const Contact = () => {
     textarea: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setFormValues({ ...formValues, [e.target.name]: e.target.value })
 
-  const senMessage = (data: FormType) => {
+
+  const sendMessage = (data: FormType) => {
     const phone = "5359017342"; // tu número sin signos ni espacios
-    const text = `Hola, soy ${data.name} y quiero agendar una sesión para el día ${data.textarea}`;
+    const text = `Hola, me llamo ${data.name}, ${data.textarea}`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    toast.success("¡Mensaje enviado! Te contactaremos pronto.", {
+      duration: 2000, position: "top-center"
+    })
     window.open(url, "_blank");
   }
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    senMessage(formValues)
+    sendMessage(formValues)
   }
 
 
@@ -46,7 +53,7 @@ const Contact = () => {
     },
     {
       icon: Mail,
-      title: 'Coreo Electrónico',
+      title: 'Correo Electrónico',
       details: ['hello@neonink.studio']
     },
     {
@@ -106,7 +113,7 @@ const Contact = () => {
               <h4 className="font-semibold mb-4">Sigue Mi Trabajo</h4>
               <div className="flex space-x-4">
                 {redes.map((platform) => (
-                  <SocialIcon url={platform.url} className='hover:shadow-lg hover:shadow-neutral-600 rounded-full transition-all duration-200' />
+                  <SocialIcon key={platform.url} url={platform.url} className='hover:shadow-lg hover:shadow-neutral-600 rounded-full transition-all duration-200' />
                 ))}
               </div>
             </div>
@@ -121,8 +128,10 @@ const Contact = () => {
                 <Input
                   placeholder="Tu nombre"
                   value={formValues.name}
-                  
+                  name="name"
+                  required
                   className="glass-effect resize-none transition-all duration-300"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -131,8 +140,10 @@ const Contact = () => {
                   placeholder="Cuéntame tu idea..."
                   rows={5}
                   value={formValues.textarea}
-                  
+                  name="textarea"
+                  required
                   className="glass-effect resize-none transition-all duration-300"
+                  onChange={handleChange}
                 />
               </div>
 

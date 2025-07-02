@@ -1,6 +1,34 @@
 import { Heart, Phone, Mail, Home } from 'lucide-react';
+import { useEffect } from "react";
+
+const navItems = [
+  { name: 'Galería', href: '#gallery' },
+  { name: 'Servicios', href: '#services' },
+  { name: 'Acerca', href: '#about' },
+  { name: 'Contacto', href: '#contact' }
+];
 
 const Footer = () => {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100;
+      let currentSection = navItems[0].href;
+      for (const item of navItems) {
+        const el = document.querySelector(item.href);
+        if (el && el instanceof HTMLElement) {
+          if (el.offsetTop <= scrollPosition) {
+            currentSection = item.href;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Para marcar la sección correcta al cargar
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <footer className="py-12 px-4 border-t border-border bg-background text-foreground">
       <div className="container mx-auto">
@@ -24,14 +52,20 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-foreground">Enlaces Rápidos</h4>
             <ul className="space-y-2">
-              {['Galería', 'Servicios', 'Acerca', 'Contacto', 'Reservar Cita'].map((link, i) => (
-                <li key={link}>
-                  <a
-                    href={`#${['galeria', 'servicios', 'acerca', 'contacto', 'reservar-cita'][i]}`}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <button
+                    onClick={e => {
+                      e.preventDefault();
+                      const el = document.querySelector(item.href);
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 relative group hover:cursor-pointer"
                   >
-                    {link}
-                  </a>
+                    {item.name}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -42,15 +76,15 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-foreground">Información del Estudio</h4>
             <div className="space-y-2 text-muted-foreground flex flex-col">
               <div className='flex flex-row gap-2'>
-                <Home className='text-cyan-500'/>
+                <Home className='text-cyan-500' />
                 <p>Calle Cyber 123</p>
               </div>
               <div className='flex flex-row gap-2'>
-                <Phone className='text-cyan-500'/>
+                <Phone className='text-cyan-500' />
                 <p>+53 59017342</p>
               </div>
               <div className='flex flex-row gap-2'>
-                <Mail className='text-cyan-500'/>
+                <Mail className='text-cyan-500' />
                 <p>hola@neonink.studio</p>
               </div>
             </div>

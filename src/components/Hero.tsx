@@ -2,6 +2,13 @@ import { ArrowDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
+  const handleScrollToGallery = () => {
+    const gallerySection = document.querySelector("#gallery");
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
@@ -14,15 +21,16 @@ const Hero = () => {
         <img
           src="/tattoo-design/contact/logo.jpg"
           alt="Logo"
-          className="h-303 mb-20"
+          className="mb-20"
         />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center absolute w-full">
-          <Button size="lg" className="neon-border bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-2000 animate-glow-pulse">
+          <Button
+            size="lg"
+            className="neon-border bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-2000 animate-glow-pulse"
+            onClick={handleScrollToGallery}
+          >
             Ver Galeria
-          </Button>
-          <Button size="lg" variant="outline" className="glass-effect border-border text-muted-foreground hover:text-white hover:bg-primary/10 transition-all duration-300">
-            Consultar libro
           </Button>
         </div>
       </div>

@@ -1,7 +1,11 @@
 import { Clock, DollarSign, Palette, Shield, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useModal } from "@/context/ModalContext";
+
+
 
 const Services = () => {
+  const { setOpen } = useModal();
   const services = [
     {
       icon: Palette,
@@ -37,7 +41,7 @@ const Services = () => {
     <section id="services" className="py-20 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 neon-text">
             Servicios
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -46,8 +50,8 @@ const Services = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {services.map((service, index) => (
-            <div key={index} className="glow-card p-6 rounded-lg text-center group hover:scale-105 transition-all duration-300 flex flex-col items-center justify-between">
+          {services.map((service) => (
+            <div key={service.title} className="glow-card p-6 rounded-lg text-center group hover:scale-105 transition-all duration-300 flex flex-col items-center justify-between">
               <div>
                 <service.icon className="w-12 h-12 mx-auto mb-4 text-primary animate-glow-pulse rounded-full backdrop-blur" />
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
@@ -69,6 +73,7 @@ const Services = () => {
                   size="sm"
                   variant="outline"
                   className="glass-effect border-primary/50 transition-all duration-300 text-primary neon-border hover:text-black hover:bg-primary active:bg-primary/10 active:text-white"
+                  onClick={() => setOpen(true)}
                 >
                   Reserva ahora
                 </Button>
