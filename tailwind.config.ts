@@ -56,6 +56,14 @@ export default {
 				'neon-purple': 'hsl(var(--neon-purple))',
 				'dark-bg': 'hsl(var(--dark-bg))',
 				'card-bg': 'hsl(var(--card-bg))',
+				primary: '#00bfff',      // Azul neón
+				secondary: '#191c22',    // Gris oscuro
+				background: '#181721',   // Fondo principal
+				border: '#191c22',       // Bordes
+				'muted-foreground': '#b0b0b0', // Gris claro para textos secundarios
+				foreground: '#ffffff',   // Texto principal
+				black: '#000000',
+				white: '#ffffff',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -81,10 +89,10 @@ export default {
 				},
 				'glow-pulse': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px hsl(var(--primary) / 0.3)'
+						filter: 'drop-shadow(0 0 .25rem rgb(0 191 255))'
 					},
 					'50%': {
-						boxShadow: '0 0 30px hsl(var(--primary) / 0.6)'
+						filter: 'drop-shadow(0 0 1rem rgb(0 191 255))'
 					}
 				},
 				'float': {

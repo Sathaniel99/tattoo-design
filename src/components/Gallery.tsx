@@ -6,22 +6,36 @@ const Gallery = () => {
 
   const categories = [
     { id: 'all', name: 'Todos los Trabajos' },
-    { id: 'cyberpunk', name: 'Cyberpunk' },
-    { id: 'geometric', name: 'Geométricos' },
-    { id: 'blackwork', name: 'Blackwork' },
-    { id: 'color', name: 'Color' }
+    { id: 'flores', name: 'Flores' },
+    { id: 'tribal', name: 'Tribal' },
+    { id: 'rostros', name: 'Rostros' },
+    { id: 'animales', name: 'Animales' },
+    { id: 'animados', name: 'Animados' },
+    { id: 'minimalista', name: 'Minimalista' },
   ];
 
   // Placeholder tattoo gallery data
   const tattoos = [
-    { id: 1, category: 'cyberpunk', image: 'https://i.etsystatic.com/37009083/r/il/300d3e/4228929192/il_1080xN.4228929192_kzoi.jpg', title: 'Neural Interface', likes: 124 },
-    { id: 2, category: 'geometric', image: 'https://outsons.com/wp-content/uploads/2021/11/Sacred-Geometry-Tattoos-1024x807.jpg', title: 'Sacred Geometry', likes: 89 },
-    { id: 3, category: 'blackwork', image: 'https://th.bing.com/th/id/R.7cc1f4f62598e286388042f9317c069a?rik=rBfDPu9NKbXChw&pid=ImgRaw&r=0', title: 'Dark Mandala', likes: 156 },
-    { id: 4, category: 'color', image: 'https://th.bing.com/th/id/R.208d22527cdd4966432e0cbb9b1c2016?rik=xq2459iK4w2pFg&pid=ImgRaw&r=0', title: 'Neon Dreams', likes: 203 },
-    { id: 5, category: 'cyberpunk', image: 'https://tse3.mm.bing.net/th/id/OIP.HjX42nLYZXR4vzKUjU-FQwHaJ4?r=0&rs=1&pid=ImgDetMain', title: 'Circuit Board', likes: 167 },
-    { id: 6, category: 'geometric', image: 'https://th.bing.com/th/id/R.8db1a0660f3130fa72965929905a15c4?rik=GwUptstrZ9ZEHA&pid=ImgRaw&r=0', title: 'Hexagonal Flow', likes: 98 }
+    { id: 1, category: 'flores', image: '/tattoo-design/tattoos/tattoo_ (1).jpeg' },
+    { id: 2, category: 'flores', image: '/tattoo-design/tattoos/tattoo_ (3).jpeg' },
+    { id: 3, category: 'flores', image: '/tattoo-design/tattoos/tattoo_ (18).jpeg' },
+    { id: 4, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (5).jpeg' },
+    { id: 5, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (9).jpeg' },
+    { id: 6, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (11).jpeg' },
+    { id: 7, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (12).jpeg' },
+    { id: 8, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (19).jpeg' },
+    { id: 9, category: 'animados', image: '/tattoo-design/tattoos/tattoo_ (8).jpeg' },
+    { id: 10, category: 'animados', image: '/tattoo-design/tattoos/tattoo_ (10).jpeg' },
+    { id: 11, category: 'animados', image: '/tattoo-design/tattoos/tattoo_ (15).jpeg' },
+    { id: 12, category: 'tribal', image: '/tattoo-design/tattoos/tattoo_ (2).jpeg' },
+    { id: 13, category: 'tribal', image: '/tattoo-design/tattoos/tattoo_ (6).jpeg' },
+    { id: 14, category: 'tribal', image: '/tattoo-design/tattoos/tattoo_ (7).jpeg' },
+    { id: 15, category: 'animales', image: '/tattoo-design/tattoos/tattoo_ (4).jpeg' },
+    { id: 16, category: 'animales', image: '/tattoo-design/tattoos/tattoo_ (13).jpeg' },
+    { id: 17, category: 'animales', image: '/tattoo-design/tattoos/tattoo_ (14).jpeg' },
+    { id: 18, category: 'animales', image: '/tattoo-design/tattoos/tattoo_ (17).jpeg' },
+    { id: 19, category: 'minimalista', image: '/tattoo-design/tattoos/tattoo_ (16).jpeg' },
   ];
-
   const filteredTattoos = activeFilter === 'all' ? tattoos : tattoos.filter(tattoo => tattoo.category === activeFilter);
 
   return (
@@ -54,11 +68,11 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-6 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6 gap-6">
           {filteredTattoos.map((tattoo, index) => (
             <div
               key={tattoo.id}
-              className="group relative glow-card rounded-lg overflow-hidden transition-all duration-500 hover:scale-105"
+              className="group relative glow-card rounded-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-neutral-600"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
@@ -66,7 +80,7 @@ const Gallery = () => {
               <div className="aspect-[3/4] overflow-hidden">
                 <img
                   src={tattoo.image}
-                  alt={tattoo.title}
+                  alt={tattoo.category + "_" + tattoo.id}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
@@ -74,18 +88,10 @@ const Gallery = () => {
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-semibold mb-2">{tattoo.title}</h3>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 text-white/80">
-                      <Heart className="w-4 h-4" />
-                      <span className="text-sm">{tattoo.likes}</span>
-                    </div>
                     <div className="flex space-x-2">
-                      <button className="w-8 h-8 rounded-full glass-effect flex items-center justify-center text-white hover:text-primary transition-colors">
+                      <button className="w-8 h-8 rounded-full glass-effect flex items-center justify-center bg-transparent backdrop-blur text-white hover:text-primary transition-colors active:bg-black active:text-white">
                         <Eye className="w-4 h-4" />
-                      </button>
-                      <button className="w-8 h-8 rounded-full glass-effect flex items-center justify-center text-white hover:text-primary transition-colors">
-                        <Share2 className="w-4 h-4" />
                       </button>
                     </div>
                   </div>

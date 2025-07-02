@@ -1,21 +1,37 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram } from 'lucide-react';
+import { SocialIcon } from 'react-social-icons'
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+
+interface FormType {
+  name: string
+  textarea: string
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formValues, setFormValues] = useState({
     name: '',
-    email: '',
-    message: ''
+    textarea: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setFormValues({ ...formValues, [e.target.name]: e.target.value })
+
+  const senMessage = (data: FormType) => {
+    const phone = "5359017342"; // tu número sin signos ni espacios
+    const text = `Hola, soy ${data.name} y quiero agendar una sesión para el día ${data.textarea}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  }
+
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-  };
+    senMessage(formValues)
+  }
+
 
   const contactInfo = [
     {
@@ -26,7 +42,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Teléfono',
-      details: ['+1 (555) 123-4567']
+      details: ['+53 59017342']
     },
     {
       icon: Mail,
@@ -36,9 +52,25 @@ const Contact = () => {
     {
       icon: Clock,
       title: 'Horarios de estudio',
-      details: ['Lunes-Viernes: 10AM-8PM', 'Sábado: 12PM-6PM', 'Domingo: Closed']
+      details: ['Lunes-Viernes: 10AM-8PM', 'Sábado: 12PM-6PM', 'Domingo: Cerrado']
     }
   ];
+  const redes = [
+    {
+      url: 'https://www.instagram.com/graphite_gray_clouds'
+    },
+    {
+      url: 'https://www.threads.com/@graphite_gray_clouds'
+    },
+    {
+      url: 'https://www.facebook.com/graphite.gray.clouds'
+    },
+    {
+      url: 'https://wa.me/+5354528530'
+    }
+  ]
+
+
 
   return (
     <section id="contact" className="py-20 px-4">
@@ -56,7 +88,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold mb-6 neon-text">Información de Contacto</h3>
-            
+
             {contactInfo.map((info, index) => (
               <div key={index} className="flex items-start space-x-4 glow-card p-6 rounded-lg">
                 <info.icon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
@@ -73,14 +105,8 @@ const Contact = () => {
             <div className="glow-card p-6 rounded-lg">
               <h4 className="font-semibold mb-4">Sigue Mi Trabajo</h4>
               <div className="flex space-x-4">
-                {['Instagram', 'Twitter', 'TikTok'].map((platform) => (
-                  <a
-                    key={platform}
-                    href="#"
-                    className="px-4 py-2 rounded-full glass-effect border border-primary/50 text-sm hover:bg-primary/10 transition-all duration-300"
-                  >
-                    {platform}
-                  </a>
+                {redes.map((platform) => (
+                  <SocialIcon url={platform.url} className='hover:shadow-lg hover:shadow-neutral-600 rounded-full transition-all duration-200' />
                 ))}
               </div>
             </div>
@@ -89,40 +115,30 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="glow-card p-8 rounded-lg">
             <h3 className="text-2xl font-semibold mb-6 neon-text">Envía un Mensaje</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
                   placeholder="Tu nombre"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="glass-effect border-primary/30 focus:border-primary"
+                  value={formValues.name}
+                  
+                  className="glass-effect resize-none transition-all duration-300"
                 />
               </div>
-              
-              <div>
-                <Input
-                  type="email"
-                  placeholder="Tu correo electrónico"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="glass-effect border-primary/30 focus:border-primary"
-                />
-              </div>
-              
+
               <div>
                 <Textarea
                   placeholder="Cuéntame tu idea..."
                   rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="glass-effect border-primary/30 focus:border-primary resize-none"
+                  value={formValues.textarea}
+                  
+                  className="glass-effect resize-none transition-all duration-300"
                 />
               </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full neon-border bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-glow-pulse"
+
+              <Button
+                type="submit"
+                className="w-full neon-border bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-2000 animate-glow-pulse"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Enviar Mensaje

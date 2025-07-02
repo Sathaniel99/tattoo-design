@@ -1,4 +1,15 @@
+import React, { useState } from 'react';
 import { Award, Users, Zap } from 'lucide-react';
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+const images = [
+  "/tattoo-design/contact/photo_1.jpg",
+  "/tattoo-design/contact/photo_2.jpg",
+  "/tattoo-design/contact/photo_3.jpg",
+  "/tattoo-design/contact/photo_4.jpg",
+];
 
 const About = () => {
   const stats = [
@@ -6,6 +17,25 @@ const About = () => {
     { icon: Users, label: 'Clientes Satisfechos', value: '500+' },
     { icon: Award, label: 'Premios Ganados', value: '12' }
   ];
+
+  const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(false);
+
+  const prevImage = () => {
+    setFade(true);
+    setTimeout(() => {
+      setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      setFade(false);
+    }, 300);
+  };
+
+  const nextImage = () => {
+    setFade(true);
+    setTimeout(() => {
+      setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      setFade(false);
+    }, 300);
+  };
 
   return (
     <section id="about" className="py-20 px-4">
@@ -51,16 +81,44 @@ const About = () => {
 
           {/* Stats & Image */}
           <div className="space-y-8">
-            {/* Artist Image */}
+            {/* Artist Image Carousel */}
             <div className="relative">
-              <div className="aspect-square rounded-lg overflow-hidden glow-card">
+              <div className="aspect-square rounded-lg overflow-hidden glow-card bg-transparent">
                 <img
-                  src="https://i.pinimg.com/originals/b1/6f/fd/b16ffd120f5b763c28f892e946249097.jpg"
-                  alt="Tatuador"
-                  className="w-full h-full object-cover"
+                  src={images[current]}
+                  alt={`Tatuador ${current + 1}`}
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}
                 />
+                {/* Botones de navegación con Material UI */}
+                <IconButton
+                  onClick={prevImage}
+                  className="!absolute !left-2 !top-1/2 -translate-y-1/2 !bg-black/40 !text-white backdrop-blur hover:!bg-black/70 transition"
+                  aria-label="Anterior"
+                  size="large"
+                  style={{ position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)', border: '1px solid grey' }}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+                <IconButton
+                  onClick={nextImage}
+                  className="!absolute !right-2 !top-1/2 -translate-y-1/2 !bg-black/40 !text-white backdrop-blur hover:!bg-black/70 transition"
+                  aria-label="Siguiente"
+                  size="large"
+                  style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)', border: '1px solid grey' }}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+                {/* Indicadores */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {images.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`block w-2 h-2 rounded-full ${idx === current ? 'bg-primary' : 'bg-white/40'}`}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/50 rounded-full animate-float"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/50 rounded-full animate-float backdrop-blur"></div>
             </div>
 
             {/* Stats */}

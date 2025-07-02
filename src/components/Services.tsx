@@ -49,7 +49,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div key={index} className="glow-card p-6 rounded-lg text-center group hover:scale-105 transition-all duration-300 flex flex-col items-center justify-between">
               <div>
-                <service.icon className="w-12 h-12 mx-auto mb-4 text-primary group-hover:animate-glow-pulse rounded-full group-hover:bg-primary/10" />
+                <service.icon className="w-12 h-12 mx-auto mb-4 text-primary animate-glow-pulse rounded-full backdrop-blur" />
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               </div>
               <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
@@ -68,7 +68,7 @@ const Services = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="glass-effect border-primary/50 hover:bg-primary/10 transition-all duration-300 text-primary hover:text-white group-hover:bg-primary/20"
+                  className="glass-effect border-primary/50 transition-all duration-300 text-primary neon-border hover:text-black hover:bg-primary active:bg-primary/10 active:text-white"
                 >
                   Reserva ahora
                 </Button>
