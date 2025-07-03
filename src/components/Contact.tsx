@@ -44,7 +44,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Ubicación del estudio',
-      details: ['123 Cyber Street', 'Neo City, NC 12345']
+      details: ['Tatuador a Domicilio']
     },
     {
       icon: Phone,
@@ -54,7 +54,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Correo Electrónico',
-      details: ['hello@neonink.studio']
+      details: ['billtomth2@gmail.com']
     },
     {
       icon: Clock,
@@ -73,7 +73,7 @@ const Contact = () => {
       url: 'https://www.facebook.com/graphite.gray.clouds'
     },
     {
-      url: 'https://wa.me/+5354528530'
+      url: 'https://wa.me/+5359017342'
     }
   ]
 

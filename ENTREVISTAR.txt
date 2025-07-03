@@ -1,8 +1,0 @@
-Preguntar:
- - Especialidades
- - Años de experiencia
- - Servicios
- - Proceso para tatuar
- - Ubicación del estudio
- - Coreo Electrónico
- - Horarios de estudio

@@ -13,7 +13,7 @@ const images = [
 
 const About = () => {
   const stats = [
-    { icon: BicepsFlexed, label: 'Años de Experiencia', value: '8+' },
+    { icon: BicepsFlexed, label: 'Años de Experiencia', value: '7+' },
     { icon: Users, label: 'Seguidores', value: '4.6 mil+' }
   ];
 
@@ -60,11 +60,11 @@ const About = () => {
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Diseños Cyberpunk y Ciencia Ficción</span>
+                  <span>Diseños Minimalistas</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Geometría Sagrada y Mandalas</span>
+                  <span>Geometría y Mandalas</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -72,7 +72,7 @@ const About = () => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Efectos Neón y Brillo</span>
+                  <span>Microrealismo y Fineline</span>
                 </li>
               </ul>
             </div>

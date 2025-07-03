@@ -1,4 +1,4 @@
-import { Clock, DollarSign, Palette, Shield, Zap } from 'lucide-react';
+import { Clock, DollarSign, Palette, Brush, Aperture, PenTool } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useModal } from "@/context/ModalContext";
 
@@ -8,21 +8,21 @@ const Services = () => {
   const { setOpen } = useModal();
   const services = [
     {
-      icon: Palette,
+      icon: Aperture,
       title: 'Diseño Personalizado',
       description: 'Diseños de tatuajes únicos y personalizados creados específicamente para ti.',
       price: 'Desde $200',
       duration: '2-4 horas'
     },
     {
-      icon: Zap,
-      title: 'Estilo Cyberpunk',
-      description: 'Diseños futuristas con efectos de neón y estética digital.',
-      price: 'Desde $300',
-      duration: '3-6 horas'
+      icon: PenTool,
+      title: 'Microrealismo y Fineline',
+      description: 'Tatuajes de altísima precisión y detalle, con líneas finas y realismo en miniatura. Técnica avanzada para resultados impactantes y delicados.',
+      price: 'Desde $400',
+      duration: '4-8 horas'
     },
     {
-      icon: Shield,
+      icon: Brush,
       title: 'Trabajo de Cubrir',
       description: 'Transforma viejos tatuajes en impresionantes nuevas obras de arte futurista.',
       price: 'Desde $250',
@@ -93,7 +93,7 @@ const Services = () => {
               { step: '04', title: 'Cuidado posterior', desc: 'Orientación para una correcta curación' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full neon-border flex items-center justify-center neon-text font-bold">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full neon-border flex items-center justify-center neon-text font-bold transition-all hover:bg-primary hover:text-black cursor-pointer">
                   {item.step}
                 </div>
                 <h4 className="font-semibold mb-2">{item.title}</h4>

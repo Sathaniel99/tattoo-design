@@ -77,7 +77,7 @@ const Footer = () => {
             <div className="space-y-2 text-muted-foreground flex flex-col">
               <div className='flex flex-row gap-2'>
                 <Home className='text-cyan-500' />
-                <p>Calle Cyber 123</p>
+                <p>Tatuador a Domicilio</p>
               </div>
               <div className='flex flex-row gap-2'>
                 <Phone className='text-cyan-500' />
@@ -85,7 +85,7 @@ const Footer = () => {
               </div>
               <div className='flex flex-row gap-2'>
                 <Mail className='text-cyan-500' />
-                <p>hola@neonink.studio</p>
+                <p>billtomth2@gmail.com</p>
               </div>
             </div>
           </div>
