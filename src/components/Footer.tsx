@@ -1,14 +1,16 @@
 import { Heart, Phone, Mail, Home } from 'lucide-react';
 import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { name: 'Galería', href: '#gallery' },
+  { name: 'Mini-Galería', href: '#gallery' },
   { name: 'Servicios', href: '#services' },
   { name: 'Acerca', href: '#about' },
   { name: 'Contacto', href: '#contact' }
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +54,14 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-foreground">Enlaces Rápidos</h4>
             <ul className="space-y-2">
+              <li key={"Toda la Galeria"}>
+                <button
+                onClick={() => navigate("/gallery")}
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 relative group hover:cursor-pointer"
+                >
+                  Toda la Galeria
+                </button>
+              </li>
               {navItems.map((item) => (
                 <li key={item.name}>
                   <button
@@ -85,7 +95,7 @@ const Footer = () => {
               </div>
               <div className='flex flex-row gap-2'>
                 <Mail className='text-cyan-500' />
-                <p>billtomth2@gmail.com</p>
+                <p>billtomth2@gmail.com </p>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { useModal } from "@/context/ModalContext";
 
 const navItems = [
   { name: 'Inicio', href: '#home' },
-  { name: 'Galería', href: '#gallery' },
+  { name: 'Mini-Galería', href: '#gallery' },
   { name: 'Acerca', href: '#about' },
   { name: 'Servicios', href: '#services' },
   { name: 'Contacto', href: '#contact' }

@@ -6,6 +6,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ScrollToTopButton from './components/ScrollToTopButton';
 import { GlobalModalProvider } from "@/components/GlobalModalProvider";
+import Gallery_total from "@/components/Gallery_total/Gallery_total";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
         <HashRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/gallery" element={<Gallery_total />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ScrollToTopButton />

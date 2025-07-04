@@ -25,7 +25,6 @@ const Gallery = () => {
     { id: 4, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (5).jpeg' },
     { id: 5, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (9).jpeg' },
     { id: 6, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (11).jpeg' },
-    { id: 7, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (12).jpeg' },
     { id: 8, category: 'rostros', image: '/tattoo-design/tattoos/tattoo_ (19).jpeg' },
     { id: 9, category: 'animados', image: '/tattoo-design/tattoos/tattoo_ (8).jpeg' },
     { id: 10, category: 'animados', image: '/tattoo-design/tattoos/tattoo_ (10).jpeg' },
@@ -46,7 +45,7 @@ const Gallery = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold neon-text mb-8">
-            Galería de Tatuajes
+            Mini-Galería
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
             Explora algunos de mis trabajos más recientes y encuentra inspiración para tu próximo tatuaje.
@@ -70,7 +69,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 overflow-hidden" style={{ maskImage: 'linear-gradient(to top, #00000000, rgb(0 0 0))', maxHeight: '40rem' }}>
           <AnimatePresence>
             {filteredTattoos.map((tattoo, index) => (
               <motion.div

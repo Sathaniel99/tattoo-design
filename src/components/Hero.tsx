@@ -1,7 +1,10 @@
 import { ArrowDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const handleScrollToGallery = () => {
     const gallerySection = document.querySelector("#gallery");
     if (gallerySection) {
@@ -30,7 +33,15 @@ const Hero = () => {
             className="neon-border bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-2000 animate-glow-pulse"
             onClick={handleScrollToGallery}
           >
-            Ver Galeria
+            Mini-Galería
+          </Button>
+          <Button
+            onClick={() => navigate("/gallery")}
+            size="lg"
+            className="md:flex border-neutral-500 border-2 bg-neutral-950 text-muted-foreground hover:text-white hover:bg-neutral-800 transition-all duration-300 active:bg-neutral-700 active:text-white"
+            
+          >
+            Toda la Galería
           </Button>
         </div>
       </div>
