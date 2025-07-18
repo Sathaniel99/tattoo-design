@@ -77,4 +77,25 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: white;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.082);
+    border-radius: .3rem;
+    padding: .35rem;
+    border: 1px solid rgb(122, 122, 122);
+    transition: 200ms all ease-in-out;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    background-color: rgba(112, 112, 112, 0.575);
+    box-shadow: 0 0 .25rem rgba(112, 112, 112, 0.575);
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:active {
+    background-color: rgba(73, 73, 73, 0.575);
+    box-shadow: 0 0 .25rem rgba(112, 112, 112, 0.575);
+    color: white;
+  }
 }
